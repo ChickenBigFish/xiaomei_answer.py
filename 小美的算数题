@@ -1,0 +1,55 @@
+from random import *
+num = eval(input("题目数量："))
+scope = eval(input("数字范围："))
+right = 0
+false = []
+for i in range(1, num+1):
+    print(" {})".format(i), end=" ")
+    a1 = randint(0, scope)
+    a2 = randint(0, scope)
+    sign = randint(1, 4)
+    if sign == 1:
+        print(a1, "+", a2, "=", end=" ")
+        ans = eval(input())
+        if ans == (a1+a2):
+            right = right+1
+        else:
+            false.append(i)
+    if sign == 2:
+        while a1-a2 < 0:
+            a1 = randint(0, scope)
+            a2 = randint(0, scope)
+        print(a1, "-", a2, "=", end=" ")
+        ans = eval(input())
+        if ans == (a1 - a2):
+            right = right + 1
+        else:
+            false.append(i)
+    if sign == 3:
+        print(a1, "*", a2, "=", end=" ")
+        ans = eval(input())
+        if ans == (a1 * a2):
+            right = right + 1
+        else:
+            false.append(i)
+    if sign == 4:
+        while (a1 % a2) != 0 or a2 == 0:
+            a1 = randint(0, scope)
+            a2 = randint(0, scope)
+        print(a1, "/", a2, "=", end=" ")
+        ans = eval(input())
+        if ans == (a1 / a2):
+            right = right + 1
+        else:
+            false.append(i)
+print("=============成绩报表=============")
+print("您答对了{}题".format(right))
+print("您答错的题号是：", end=" ")
+n = len(false)
+for k in range(n):
+    print(false[k], end=" ")
+
+
+
+
+
